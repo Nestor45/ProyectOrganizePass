@@ -18,4 +18,21 @@ const getCharacters = async () => {
     return characters
 }
 
+const addOrUpdateCharacter = async (character) => {
+    const params = {
+        TableName:TABLE_NAME,
+        Item:character
+    }
+    return await dynamoClient.put(params).promise()
+}
+
+const user = {
+    '_id': '0',
+    'name': "Harry Pother",
+    'email': "harry_poter@test.com",
+    'password': "testpassword",
+    'image': 'urlcompleta/testimage.jpg'
+}
+
 getCharacters()
+addOrUpdateCharacter(user)
