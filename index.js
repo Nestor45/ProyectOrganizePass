@@ -1,16 +1,12 @@
+import express from 'express'
 import 'dotenv/config'
 //import './database/connectdb.js'
 import './database/dynamodb.js'
-import express from 'express'
+import authRouter from './routes/auth.route.js'
 
 const app = express()
 
-app.get('/', (req, res) => {
-    res.json({
-        status: 'true',
-        message: 'todo listo!'
-    })
-})
+app.use('/api', authRouter)
 
 const PORT = process.env.PORT || 3000
 
