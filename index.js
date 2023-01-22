@@ -4,8 +4,10 @@ import 'dotenv/config'
 import './database/dynamodb.js'
 import authRouter from './routes/auth.route.js'
 
+
 const app = express()
 
+app.use(express.json())
 app.use('/api', authRouter)
 
 const PORT = process.env.PORT || 3000
