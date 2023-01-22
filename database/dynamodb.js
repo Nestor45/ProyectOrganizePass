@@ -6,33 +6,63 @@ AWS.config.update({
     secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY
 })
 
-const dynamoClient = new AWS.DynamoDB.DocumentClient()
-const TABLE_NAME = "proyect-aws-pass"
-
-const getCharacters = async () => {
-    const params = {
-        TableName: TABLE_NAME
-    }
-    const characters = await dynamoClient.scan(params).promise()
-    console.log("Conected DynamoDB: ",characters)
-    return characters
+try {
+    const dynamoClient = await new AWS.DynamoDB.DocumentClient()
+    const TABLE_NAME = process.env.NAME_DATA_BASE
+    console.log("Connet DB ok", dynamoClient)
+} catch (error) {
+    console.log(error, "Error de conexion a la BASE DE DATOS")
 }
 
-const addOrUpdateCharacter = async (character) => {
-    const params = {
-        TableName:TABLE_NAME,
-        Item:character
-    }
-    return await dynamoClient.put(params).promise()
-}
+/* module.exports = {
 
-const user = {
+    getCharacters: async () => {
+        const params = {
+            TableName: TABLE_NAME
+        }
+        const characters = await dynamoClient.scan(params).promise()
+        console.log("Conected DynamoDB: ",characters)
+        return characters
+    },
+    
+    getCharacterById: async (id) => {
+        const params = {
+            TableName:TABLE_NAME,
+            Key: {
+                id,
+            },
+        }
+        return await dynamoClient.get(params).promise()
+    },
+    
+    addOrUpdateCharacter: async (character) => {
+        const params = {
+            TableName:TABLE_NAME,
+            Item:character
+        }
+        return await dynamoClient.put(params).promise()
+    },
+    
+    deleteCharacter: async (id, character) => {
+        const params = {
+            TableName:TABLE_NAME,
+            Key: {
+                id,
+            },
+            Item:character,
+        }
+        return await dynamoClient.put(params).promise()
+    }
+} */
+
+/* const user = {
     '_id': '0',
-    'name': "Harry Pother",
-    'email': "harry_poter@test.com",
+    'name': "Harry Potter",
+    'email': "harry_potter@test.com",
     'password': "testpassword",
     'image': 'urlcompleta/testimage.jpg'
-}
+} */
 
-getCharacters()
-addOrUpdateCharacter(user)
+
+/* getCharacters()
+addOrUpdateCharacter(user) */
