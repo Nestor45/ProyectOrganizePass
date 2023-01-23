@@ -1,14 +1,8 @@
-import { Schema,model } from "dynamoose"
+import dynamoose from "dynamoose"
 
-const userSchema = new Schema({
-    'id':{
-        'hashKey':true,
+const userSchema = new dynamoose.Schema({
+    '_id':{
         'type': String,
-        "index": {
-            "name": "emailIndex",
-            "rangeKey": "email",
-            "throughput": {"read": 5, "write": 10}
-        } 
     },
     'name':String,
     'email':{
@@ -17,7 +11,6 @@ const userSchema = new Schema({
     },
     'password':{
         'type': String,
-        'required': true
     },
     'image':String,
     'status': {
@@ -31,4 +24,4 @@ const userSchema = new Schema({
     }
 })
 
-export const User = model('user', userSchema)
+export const User = dynamoose.model('User', userSchema)

@@ -6,26 +6,24 @@ AWS.config.update({
     secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY
 })
 
-try {
-    const dynamoClient = await new AWS.DynamoDB.DocumentClient()
-    const TABLE_NAME = process.env.NAME_DATA_BASE
-    console.log("Connet DB ok", dynamoClient)
-} catch (error) {
-    console.log(error, "Error de conexion a la BASE DE DATOS")
-}
+const dynamoClient = await new AWS.DynamoDB.DocumentClient()
+const TABLE_NAME = process.env.NAME_DATA_BASE
 
-/* module.exports = {
+//console.log("Connet DB ok", dynamoClient)
+    
 
-    getCharacters: async () => {
+//module.exports = {
+
+    const getCharacters =  async () => {
         const params = {
             TableName: TABLE_NAME
         }
         const characters = await dynamoClient.scan(params).promise()
-        console.log("Conected DynamoDB: ",characters)
+        //console.log("Conected DynamoDB: ",characters)
         return characters
-    },
+    }
     
-    getCharacterById: async (id) => {
+    /* getCharacterById: async (id) => {
         const params = {
             TableName:TABLE_NAME,
             Key: {
@@ -33,17 +31,17 @@ try {
             },
         }
         return await dynamoClient.get(params).promise()
-    },
+    }, */
     
-    addOrUpdateCharacter: async (character) => {
+    const addOrUpdateCharacter = async (character) => {
         const params = {
-            TableName:TABLE_NAME,
+            TableName:'proyect-aws-pass',
             Item:character
         }
         return await dynamoClient.put(params).promise()
-    },
+    }
     
-    deleteCharacter: async (id, character) => {
+    /* deleteCharacter: async (id, character) => {
         const params = {
             TableName:TABLE_NAME,
             Key: {
@@ -52,17 +50,17 @@ try {
             Item:character,
         }
         return await dynamoClient.put(params).promise()
-    }
-} */
+    } */
+//}
 
-/* const user = {
-    '_id': '0',
-    'name': "Harry Potter",
-    'email': "harry_potter@test.com",
-    'password': "testpassword",
-    'image': 'urlcompleta/testimage.jpg'
-} */
+const user = {
+    '_id': '1',
+    'name': "Harry Potter2",
+    'email': "harry_potter2@test.com",
+    'password': "2testpassword",
+    'image': '2urlcompleta/testimage.jpg'
+}
 
 
-/* getCharacters()
-addOrUpdateCharacter(user) */
+//getCharacters()
+//addOrUpdateCharacter(user) 
