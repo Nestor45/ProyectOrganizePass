@@ -4,10 +4,12 @@ const userSchema = new dynamoose.Schema({
     '_id':{
         'type': String,
     },
-    'name':String,
+    'name':{
+        'type':String,
+    },
     'email':{
         'type': String,
-        'required': true
+        'required': true,  
     },
     'password':{
         'type': String,

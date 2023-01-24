@@ -1,5 +1,5 @@
 import dynamoose from 'dynamoose'
-import mongoose from 'mongoose';
+//import mongoose from 'mongoose';
 
 // Create new DynamoDB instance
 const ddb = new dynamoose.aws.ddb.DynamoDB({
@@ -9,7 +9,7 @@ const ddb = new dynamoose.aws.ddb.DynamoDB({
 });
 
 try {
-    await mongoose.connect(process.env.URI_MONGO)
+    //await mongoose.connect(process.env.URI_MONGO)
     console.log("BASE DE DATOS MONGO CONECTADA MONGODB!!")
 } catch (error) {
     console.log("Error en la conexion",error)
