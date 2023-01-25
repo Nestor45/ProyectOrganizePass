@@ -1,4 +1,4 @@
-# API RES PROYECTO DE AWS DESARROLLO ITESO
+# API REST PROYECTO DE AWS DESARROLLO ITESO
     - Almacenamiento Seguro de Contraseñas en la Nube. 
 
 # Descripción: 
